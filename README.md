@@ -42,16 +42,6 @@ Now install Vagrant either from the website or use homebrew for installing it.
     ```
     vagrant ssh airflow-zylo
     ```
-## Create mySQL table and connection ID
-
-1. Create table
-    ```
-    mysql -u root -p -e "use airflow_zylo; create table top_teams(yearID int, teamID varchar(24), franchID varchar(24), W int, L int, percentage varchar(24), franchName varchar(64));"
-
-    Enter password: airflow
-    ```
-
-2. 
 
 ## Initialize Airflow
 
@@ -78,7 +68,27 @@ Now install Vagrant either from the website or use homebrew for installing it.
     airflow scheduler
     ```
 
-4. Open a web browser to the UI at http://192.168.33.10:8080
+5. Open a web browser to the UI at http://192.168.33.10:8080
+    
+## Create mySQL table and connection ID
+
+1. Create table
+    ```
+    mysql -u root -p -e "use airflow_zylo; create table top_teams(yearID int, teamID varchar(24), franchID varchar(24), W int, L int,         percentage varchar(24), franchName varchar(64));"
+
+    Enter password: airflow
+    ```
+2. Create Connection in Airflow UI.  Go to Admin>Connections> local_mysql Edit
+    ```
+    Conn Id: local_mysql 
+    Conn Type: MySQL 
+    Host: localhost 
+    Schema: airflow_zylo 
+    Login: root 
+    Password: airflow 
+    Port: '**leave blank**' 
+    Extra:  '**leave blank**' 
+    ```
 
 ## Run a task
 
