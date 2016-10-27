@@ -69,6 +69,8 @@ Now install Vagrant either from the website or use homebrew for installing it.
     ```
 
 5. Open a web browser to the UI at http://192.168.33.10:8080
+
+6. In Airflow UI go to DAGs tab and find the zylo_example DAG and toggle from Off to On
     
 ## Create mySQL table and connection ID
 
@@ -105,7 +107,13 @@ Now install Vagrant either from the website or use homebrew for installing it.
     ```
     airflow trigger_dag zylo_example
     ```
-
+3.  You can then click on the zylo_example DAG to view progress of job in Graph View.  Click on Code and you can view
+    the code used to create the DAG.  This job does the following:
+    a. Grab zip file baseballdatabank-master_2016-03-02.zip from url and unzip
+    b. Use Teams.csv to compute winning percentages for every team by year back to 1871 and then select the team with the highest
+       winning percentage per year.  Also merge the TeamsFranchises.csv to get team names.
+    c. Finally load the data into a mySQL table called top_teams in the airflow_zylo database.
+    
 ## Add a new task
 
 1. Go to the Airflow config directory
